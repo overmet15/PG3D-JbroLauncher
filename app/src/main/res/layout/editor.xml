@@ -8,10 +8,13 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="56dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/navigation"
-        android:layout_height="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <View
@@ -49,13 +52,12 @@
 
         <ScrollView
             android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/borderbackground"
             android:orientation="vertical"
-            android:scrollbarSize="7.0dip"
-            android:layout_height="fill_parent">
+            android:scrollbarSize="7.0dip">
 
-            <include
-                layout="@layout/content_editor"/>
+            <include layout="@layout/content_editor" />
 
         </ScrollView>
 

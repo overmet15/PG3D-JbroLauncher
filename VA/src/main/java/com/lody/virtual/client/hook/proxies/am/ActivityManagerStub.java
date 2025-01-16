@@ -88,10 +88,14 @@ public class ActivityManagerStub extends MethodInvocationProxy<MethodInvocationS
                 public Object call(Object who, Method method, Object... args) throws Throwable {
                     Object _infos = method.invoke(who, args);
                     //noinspection unchecked
-                    List<ActivityManager.RecentTaskInfo> infos =
-                            ParceledListSliceCompat.isReturnParceledListSlice(method)
-                                    ? ParceledListSlice.getList.call(_infos)
-                                    : (List) _infos;
+                    List<ActivityManager.RecentTaskInfo> infos;
+                    if (ParceledListSliceCompat.isReturnParceledListSlice(method)) {
+                        infos = (List<ActivityManager.RecentTaskInfo>) ParceledListSlice.getList.call(_infos);
+                    } else {
+                        // Check if _infos is already a List of RecentTaskInfo or handle it appropriately
+                        infos = (List<ActivityManager.RecentTaskInfo>) _infos;
+                    }
+
                     for (ActivityManager.RecentTaskInfo info : infos) {
                         AppTaskInfo taskInfo = VActivityManager.get().getTaskInfo(info.id);
                         if (taskInfo == null) {

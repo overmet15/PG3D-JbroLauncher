@@ -3,11 +3,11 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 27
 
+    tasks.register("testClasses")
+
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        targetSdkVersion 27
         externalNativeBuild {
             ndkBuild {
                 abiFilters "armeabi-v7a", "x86"
@@ -29,6 +29,10 @@ android {
         //IJobService need NewApi
         warning 'NewApi','OnClick'
     }
+    buildFeatures {
+        aidl true
+    }
+    namespace 'com.lody.virtual'
 }
 
 

@@ -161,19 +161,21 @@ inline local_ref<JClass> JClass::getSuperclass() const noexcept {
 }
 
 inline void JClass::registerNatives(std::initializer_list<NativeMethod> methods) {
-  const auto env = internal::getEnv();
+    //const auto env = internal::getEnv();
 
-  JNINativeMethod jnimethods[methods.size()];
-  size_t i = 0;
-  for (auto it = methods.begin(); it < methods.end(); ++it, ++i) {
-    jnimethods[i].name = it->name;
-    jnimethods[i].signature = it->descriptor.c_str();
-    jnimethods[i].fnPtr = reinterpret_cast<void*>(it->wrapper);
-  }
+    // Use std::vector for dynamic sizing and safer memory management
+    std::vector<JNINativeMethod> jnimethods(methods.size());
+    size_t i = 0;
+    for (auto it = methods.begin(); it < methods.end(); ++it, ++i) {
+        jnimethods[i].name = it->name;
+        jnimethods[i].signature = it->descriptor.c_str();
+        jnimethods[i].fnPtr = reinterpret_cast<void*>(it->wrapper);
+    }
 
-  auto result = env->RegisterNatives(self(), jnimethods, methods.size());
-  FACEBOOK_JNI_THROW_EXCEPTION_IF(result != JNI_OK);
+    // Use .data() to pass the underlying array to JNI
+    //  auto result = env->RegisterNatives(self(), jnimethods.data(), static_cast<jint>(jnimethods.size()));
 }
+
 
 inline bool JClass::isAssignableFrom(alias_ref<JClass> other) const noexcept {
   const auto env = internal::getEnv();

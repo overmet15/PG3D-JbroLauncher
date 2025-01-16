@@ -35,7 +35,7 @@
         n1:layout_alignParentBottom="true"
         n1:layout_centerHorizontal="true"
         n1:layout_marginBottom="200dp"
-        n1:text="By Jbro129"
+        n1:text="Revived by overmet15"
         n1:textColor="@color/opaque_black"
         n1:textSize="16.0sp" />
 </RelativeLayout>

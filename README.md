@@ -1,6 +1,9 @@
+## This is work in progress fix of Jbro's mod menu.
+
+# Everything past here was written by jbro.
+
 # PG3D-JbroLauncher
 For PG3D v15.3.0
-
 This project was created with [Android Studio](https://developer.android.com/studio).
 
 ## Important Files
