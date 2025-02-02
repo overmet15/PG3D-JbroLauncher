@@ -1,6 +1,7 @@
 ## This is work in progress fix of Jbro's mod menu.
+Current state of the launcher is NOT WORKING.
 
-# Everything past here was written by jbro.
+Everything past here was written by jbro.
 
 # PG3D-JbroLauncher
 For PG3D v15.3.0
